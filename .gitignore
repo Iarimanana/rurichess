@@ -2,3 +2,5 @@ build/
 CMakeCache.txt
 CMakeUserPresets.json
 Testing/
+cmake-build-debug/
+CMakeFiles/
