@@ -9,8 +9,8 @@
 
 #include "types.h"
 
-inline u64 ZERO = 0x0000000000000000;
-inline u64 MAX = 0xffffffffffffffff;
+inline UInt64 ZERO = 0x0000000000000000;
+inline UInt64 MAX = 0xffffffffffffffff;
 inline int SIZE_BOARD = 64;
 
 #endif  // RURICHESS_CONSTANT_H
