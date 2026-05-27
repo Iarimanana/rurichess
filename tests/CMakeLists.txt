@@ -1,8 +1,10 @@
 add_executable(
         TestBitBoard
         TestBitBoard.cpp
-        ../src/chess/bitboard.cpp
-        ../src/chess/bitboard.h
+        ../src/chess/src/bitboard.cpp
+        ../src/chess/include/bitboard.h
+        ../src/chess/src/pieces.cpp
+        ../src/chess/include/pieces.h
 )
 
 target_link_libraries(TestBitBoard PRIVATE gtest_main)

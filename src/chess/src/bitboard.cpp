@@ -2,10 +2,12 @@
 // Created by marshallmallow on 5/25/26.
 //
 
-#include "bitboard.h"
-#include "constant.h"
+#include "../include/bitboard.h"
+
 #include <iostream>
-#include "types.h"
+
+#include "../include/constant.h"
+#include "../include/types.h"
 
 BitBoard::BitBoard(const UInt64 bit_board) : bit_board_ {bit_board} {}
 

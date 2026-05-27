@@ -3,9 +3,11 @@
 //
 
 #include <gtest/gtest.h>
+
 #include <ranges>
-#include "../src/chess/bitboard.h"
-#include "../src/chess/types.h"
+
+#include "../src/chess/include/bitboard.h"
+#include "../src/chess/include/types.h"
 
 namespace {
 

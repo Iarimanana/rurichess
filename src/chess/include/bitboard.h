@@ -12,10 +12,12 @@ class BitBoard {
 public:
   explicit BitBoard(UInt64 bit_board);
   BitBoard();
- [[nodiscard]] UInt64 GetBit(UInt64 index) const;
+
+  [[nodiscard]] UInt64 GetBit(UInt64 index) const;
   void SetBit(UInt64 index);
   void RemoveBit(UInt64 index);
-  [[nodiscard]] int CountToZero() const;
+  [[nodiscard]] Int32 CountToZero() const;
+
   void PrintBitBoard() const;
 };
 
