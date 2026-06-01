@@ -6,12 +6,16 @@
 #define RURICHESS_BITBOARD_H
 #include "types.h"
 
-class BitBoard {
-  UInt64 bit_board_ {};
+namespace rurichess {
 
-public:
+class BitBoard {
+  UInt64 bit_board_;
+
+ public:
   explicit BitBoard(UInt64 bit_board);
   BitBoard();
+  bool operator==(const BitBoard& other) const;
+  bool operator==(UInt32 other) const;
 
   [[nodiscard]] UInt64 GetBit(UInt64 index) const;
   void SetBit(UInt64 index);
@@ -21,4 +25,6 @@ public:
   void PrintBitBoard() const;
 };
 
-#endif //RURICHESS_BITBOARD_H
+}  // namespace rurichess
+
+#endif  // RURICHESS_BITBOARD_H

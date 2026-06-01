@@ -8,22 +8,24 @@
 
 #include "../include/pieces.h"
 
-Board::Board() {
+using namespace rurichess;
+
+Board::Board() : board_{} {
   initial_position = BitBoard(0xffff00000000ffff);
-  for (const UInt8 i : std::views::iota(0, NUM_PIECES)) {
+  for (const Int32 i : std::views::iota(0, kPIECE_ARRAY_LEN))
     board_[i] = Pieces(i);
-  }
 }
 
 void Board::PrintBoard() const {
-  std::array<std::string, NUM_SQUARES> output;
-  output.fill(".");
-  for (Pieces p : board_) {
-    const Int32 position = GetPiecePosition(p);
-    output[position] = p.GetName();
-  }
-}
+  const std::array<Pieces, kPIECE_ARRAY_LEN> tmp = board_;
+  std::array<std::string, kNUM_SQUARES> output;
+  output.fill(std::string("."));
 
-Int32 Board::GetPiecePosition(const Pieces& p) {
-  return  p.GetPosition().CountToZero();
+  for (Pieces p : tmp) {
+    while (p.position() != 0) {
+      const Int32 position = p.position().CountToZero();
+      output[position] = p.name();
+      p.position().RemoveBit(position);
+    }
+  }
 }

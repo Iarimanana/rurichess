@@ -5,6 +5,6 @@
 #include "../chess/include/board.h"
 
 int main() {
-  const auto board = Board();
+  const auto board = rurichess::Board();
   board.PrintBoard();
 }

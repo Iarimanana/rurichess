@@ -9,19 +9,25 @@
 #include "../include/constant.h"
 #include "../include/types.h"
 
-BitBoard::BitBoard(const UInt64 bit_board) : bit_board_ {bit_board} {}
+using namespace rurichess;
 
-BitBoard::BitBoard() {
-  bit_board_ = ZERO;
+BitBoard::BitBoard(const UInt64 bit_board) : bit_board_{bit_board} {}
+
+BitBoard::BitBoard() { bit_board_ = ZERO; }
+
+bool BitBoard::operator==(const BitBoard& other) const {
+  return bit_board_ == other.bit_board_;
+}
+
+bool BitBoard::operator==(const UInt32 other) const {
+  return bit_board_ == other;
 }
 
 UInt64 BitBoard::GetBit(const UInt64 index) const {
   return (this->bit_board_ >> index) & 1;
 }
 
-void BitBoard::SetBit(const UInt64 index) {
-  bit_board_ |= (1 << index);
-}
+void BitBoard::SetBit(const UInt64 index) { bit_board_ |= (1 << index); }
 
 void BitBoard::RemoveBit(const UInt64 index) {
   bit_board_ ^= GetBit(index) ? 1 << index : 0;
@@ -33,7 +39,7 @@ int BitBoard::CountToZero() const {
   while (GetBit(count) == 0) {
     count++;
   }
-  return count;
+  return count - 1;
 }
 
 void BitBoard::PrintBitBoard() const {

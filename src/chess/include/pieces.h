@@ -11,77 +11,57 @@
 #include "bitboard.h"
 #include "types.h"
 
-inline std::array<UInt64, 64> kPIECES_POSITION = {
-  0xff000000000000, 0xff00,
-  0x8100000000000000, 0x81,
-  0x4200000000000000, 0x42,
-  0x2400000000000000, 0x24,
-  0x800000000000000, 0x8,
-  0x1000000000000000, 0x10,
-  0xffff000000000000, 0xffff,
+namespace rurichess {
+
+inline constexpr Int32 kPIECE_ARRAY_LEN = 12;
+inline constexpr UInt64 kBLACK_POSITION = 0xffff000000000000;
+inline constexpr UInt64 kWHITE_POSITION = 0xffff;
+
+enum class Color : UInt8 { Black, White };
+
+inline std::array<UInt64, kPIECE_ARRAY_LEN> kPIECES_POSITIONS_ARRAY = {
+    0xff00, 0xff000000000000,   0x81, 0x8100000000000000,
+    0x42,   0x4200000000000000, 0x24, 0x2400000000000000,
+    0x8,    0x800000000000000,  0x10, 0x1000000000000000,
 };
 
-inline std::array<std::string, 16> kPIECE_REPRESENTATION = {
-  "P", "p", "R", "r", "N", "n",
-  "B", "b", "Q", "q", "K", "k"
-};
+inline std::array kPIECES_REPRESENTATIONS_ARRAY = {
+    'P', 'p', 'R', 'r', 'N', 'n', 'B', 'b', 'Q', 'q', 'K', 'k'};
 
 enum class PieceNames : UInt8 {
-  Wpawn, Bpawn, Wrook, Brook, Wknight, Bknight,
-  Wbishop, Bbishop, Wqueen, Bqueen, Wking, Bking
-};
-
-enum class Color : Int8 {
-  Black, White
+  Wpawn,
+  Bpawn,
+  Wrook,
+  Brook,
+  Wknight,
+  Bknight,
+  Wbishop,
+  Bbishop,
+  Wqueen,
+  Bqueen,
+  Wking,
+  Bking
 };
 
 class Pieces {
-public:
+ public:
   explicit Pieces(PieceNames name);
-  explicit Pieces(UInt8 name);
+  explicit Pieces(Int32 name);
   Pieces();
   Pieces(const Pieces& other) = default;
-  Pieces& operator=(Pieces const& other);
+  Pieces& operator=(const Pieces& other);
   // TODO: BitBoard movement() const;
 
-  [[nodiscard]] BitBoard GetPosition() const;
-  [[nodiscard]] std::string GetName() const;
-  [[nodiscard]] Color GetSuit() const;
+  [[nodiscard]] BitBoard& position();
+  [[nodiscard]] char name() const;
+  [[nodiscard]] Color suit() const;
 
-private:
+ private:
   BitBoard position_;
-  std::string& name_;
+  char name_;
   Color suit_;
 };
 
-class Pawn : public Pieces {
-public:
-  using Pieces::Pieces;
-};
-
-class Rook : public Pieces {
-public:
-  using Pieces::Pieces;
-};
-
-class Knight : public Pieces {
-public:
-  using Pieces::Pieces;
-};
-
-class Bishop : public Pieces {
-public:
-  using Pieces::Pieces;
-};
-
-class Queen : public Pieces {
-public:
-  using Pieces::Pieces;
-};
-
-class King : public Pieces {
-public:
-  using Pieces::Pieces;
-};
+}  // namespace rurichess
 
 #endif  // RURICHESS_PIECES_H

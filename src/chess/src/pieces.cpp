@@ -1,22 +1,27 @@
 //
 // Created by marshallmallow on 5/27/26.
 //
-
 #include "../include/pieces.h"
+
+#include <stdexcept>
+
+using namespace rurichess;
 
 Pieces::Pieces() : Pieces(PieceNames::Wpawn) {}
 
 Pieces::Pieces(const PieceNames name)
-    : name_ { kPIECE_REPRESENTATION[static_cast<UInt8>(name)] } {
-  const auto name_uint8 = static_cast<UInt8>(name);
-  suit_ = (name_uint8 % 2 == 0) ? Color::Black : Color::White;
-  position_ = BitBoard(kPIECES_POSITION[name_uint8]);
+    : name_{kPIECES_REPRESENTATIONS_ARRAY[static_cast<Int32>(name)]} {
+  const auto name_32 = static_cast<Int32>(name) + 1;
+  suit_ = (name_32 % 2 == 0) ? Color::Black : Color::White;
+  position_ = BitBoard(kPIECES_POSITIONS_ARRAY[name_32]);
 }
 
-Pieces::Pieces(const UInt8 name)
-    : name_ { kPIECE_REPRESENTATION[name] } {
-  suit_ = (name % 2 == 0) ? Color::Black : Color::White;
-  position_ = BitBoard(kPIECES_POSITION[name]);
+Pieces::Pieces(const Int32 name) : name_{kPIECES_REPRESENTATIONS_ARRAY[name]} {
+  if (name >= kPIECE_ARRAY_LEN)
+    throw std::invalid_argument("The name of the piece is invalid.");
+
+  suit_ = ((name + 1) % 2 == 0) ? Color::Black : Color::White;
+  position_ = BitBoard(kPIECES_POSITIONS_ARRAY[name]);
 }
 
 Pieces& Pieces::operator=(const Pieces& other) {
@@ -28,8 +33,8 @@ Pieces& Pieces::operator=(const Pieces& other) {
   return *this;
 }
 
-BitBoard Pieces::GetPosition() const { return position_; }
+BitBoard& Pieces::position() { return position_; }
 
-std::string Pieces::GetName() const { return name_; }
+char Pieces::name() const { return name_; }
 
-Color Pieces::GetSuit() const { return suit_; }
+Color Pieces::suit() const { return suit_; }
