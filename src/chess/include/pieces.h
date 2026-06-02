@@ -6,7 +6,6 @@
 #define RURICHESS_PIECES_H
 
 #include <array>
-#include <string>
 
 #include "bitboard.h"
 #include "types.h"
@@ -28,7 +27,7 @@ inline std::array<UInt64, kPIECE_ARRAY_LEN> kPIECES_POSITIONS_ARRAY = {
 inline std::array kPIECES_REPRESENTATIONS_ARRAY = {
     'P', 'p', 'R', 'r', 'N', 'n', 'B', 'b', 'Q', 'q', 'K', 'k'};
 
-enum class PieceNames : UInt8 {
+enum class PieceNames : Int32 {
   Wpawn,
   Bpawn,
   Wrook,
@@ -43,13 +42,13 @@ enum class PieceNames : UInt8 {
   Bking
 };
 
-class Pieces {
+class Piece {
  public:
-  explicit Pieces(PieceNames name);
-  explicit Pieces(Int32 name);
-  Pieces();
-  Pieces(const Pieces& other) = default;
-  Pieces& operator=(const Pieces& other);
+  explicit Piece(PieceNames name);
+  explicit Piece(Int32 name);
+  Piece();
+  Piece(const Piece& other) = default;
+  Piece& operator=(Piece other) noexcept;
   // TODO: BitBoard movement() const;
 
   [[nodiscard]] BitBoard& position();

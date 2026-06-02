@@ -15,12 +15,12 @@ class BitBoard {
   explicit BitBoard(UInt64 bit_board);
   BitBoard();
   bool operator==(const BitBoard& other) const;
-  bool operator==(UInt32 other) const;
+  bool operator==(const UInt64& other) const;
 
   [[nodiscard]] UInt64 GetBit(UInt64 index) const;
   void SetBit(UInt64 index);
   void RemoveBit(UInt64 index);
-  [[nodiscard]] Int32 CountToZero() const;
+  [[nodiscard]] Int32 CountTrailingZero() const;
 
   void PrintBitBoard() const;
 };

@@ -84,7 +84,7 @@ enum class SquareNames : UInt8 {
 };
 
 class Board {
-  std::array<Pieces, kPIECE_ARRAY_LEN> board_;
+  std::array<Piece, kPIECE_ARRAY_LEN> board_;
   BitBoard initial_position;
 
  public:
