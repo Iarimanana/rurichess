@@ -52,8 +52,8 @@ TEST_F(TestBitBoard, TestCountToZero) {
 
 TEST_F(TestBitBoard, TestEQOpeartor) {
   const auto tmp = BitBoard(kBLACK_PAWN);
-  ASSERT_EQ(bit_b == tmp, true);
-  ASSERT_EQ(bit_b == kBLACK_PAWN, true);
+  ASSERT_EQ(bit_b, tmp);
+  ASSERT_EQ(bit_b, kBLACK_PAWN);
 }
 
 }  // namespace

@@ -7,6 +7,15 @@
 
 using namespace rurichess;
 
+constexpr std::array<UInt64, kPIECE_ARRAY_LEN> kPIECES_POSITIONS_ARRAY = {
+    0xff00, 0xff000000000000,   0x81, 0x8100000000000000,
+    0x42,   0x4200000000000000, 0x24, 0x2400000000000000,
+    0x8,    0x800000000000000,  0x10, 0x1000000000000000,
+};
+
+constexpr std::array kPIECES_REPRESENTATIONS_ARRAY = {
+    'P', 'p', 'R', 'r', 'N', 'n', 'B', 'b', 'Q', 'q', 'K', 'k'};
+
 Piece::Piece() : Piece(PieceNames::Wpawn) {}
 
 Piece::Piece(const PieceNames name)
@@ -33,6 +42,8 @@ Piece& Piece::operator=(Piece other) noexcept {
 }
 
 BitBoard& Piece::position() { return position_; }
+
+const BitBoard& Piece::position() const { return position_; }
 
 char Piece::name() const { return name_; }
 
