@@ -16,7 +16,7 @@ using namespace rurichess;
 
 class TestBitBoard : public testing::Test {
  protected:
-  void SetUp() override { bit_b = BitBoard(kPIECES_POSITIONS_ARRAY[1]); }
+  void SetUp() override { bit_b = BitBoard(kPiecesPositionsArray[1]); }
 
   void TearDown() override { bit_b.PrintBitBoard(); }
 

@@ -1,11 +1,13 @@
-add_library(chess STATIC)
+add_library(chess STATIC
+        src/movement.cpp
+        include/movement.h)
 
 target_sources(
         chess
         PRIVATE
-            src/board.cpp
-            src/bitboard.cpp
-            src/pieces.cpp
+        src/board.cpp
+        src/bitboard.cpp
+        src/pieces.cpp
 )
 
 target_include_directories(chess PUBLIC include/)

@@ -22,9 +22,9 @@ class TestPiece : public testing::Test {
 
 TEST_F(TestPiece, TestPostion) {
   const BitBoard& b = p.position();
-  const auto wp = BitBoard(kPIECES_POSITIONS_ARRAY[0]);
+  const auto wp = BitBoard(kPiecesPositionsArray[0]);
   ASSERT_EQ(b, wp);
-  ASSERT_EQ(&b, &wp);
+  ASSERT_EQ(&b, &p.position());
 }
 
 TEST_F(TestPiece, TestPieceConstructor) {
@@ -32,17 +32,17 @@ TEST_F(TestPiece, TestPieceConstructor) {
   const auto p_two = Piece(PieceNames::Wpawn);
   const auto p_three = Piece(0);
 
-  ASSERT_EQ(p_one.name(), kPIECES_REPRESENTATIONS_ARRAY[0]);
-  ASSERT_EQ(p_two.name(), kPIECES_REPRESENTATIONS_ARRAY[0]);
-  ASSERT_EQ(p_three.name(), kPIECES_REPRESENTATIONS_ARRAY[0]);
+  ASSERT_EQ(p_one.name(), kPiecesRepresentationsArray[0]);
+  ASSERT_EQ(p_two.name(), kPiecesRepresentationsArray[0]);
+  ASSERT_EQ(p_three.name(), kPiecesRepresentationsArray[0]);
 
   ASSERT_EQ(p_one.suit(), Color::White);
   ASSERT_EQ(p_two.suit(), Color::White);
   ASSERT_EQ(p_three.suit(), Color::White);
 
-  ASSERT_EQ(p_one.position(), BitBoard(kPIECES_POSITIONS_ARRAY[0]));
-  ASSERT_EQ(p_two.position(), BitBoard(kPIECES_POSITIONS_ARRAY[0]));
-  ASSERT_EQ(p_two.position(), BitBoard(kPIECES_POSITIONS_ARRAY[0]));
+  ASSERT_EQ(p_one.position(), BitBoard(kPiecesPositionsArray[0]));
+  ASSERT_EQ(p_two.position(), BitBoard(kPiecesPositionsArray[0]));
+  ASSERT_EQ(p_two.position(), BitBoard(kPiecesPositionsArray[0]));
 }
 
 TEST_F(TestPiece, TestEQOperator) {

@@ -14,14 +14,16 @@ class BitBoard {
  public:
   explicit BitBoard(UInt64 bit_board);
   BitBoard();
+
   bool operator==(const BitBoard& other) const;
   bool operator==(const UInt64& other) const;
+  BitBoard operator|(const BitBoard& other) const;
+  BitBoard operator|(const UInt64& other) const;
 
-  [[nodiscard]] UInt64 GetBit(UInt64 index) const;
-  void SetBit(UInt64 index);
-  void RemoveBit(UInt64 index);
+  [[nodiscard]] Int32 GetBit(Int32 index) const;
   [[nodiscard]] Int32 CountTrailingZero() const;
-
+  void SetBit(Int32 index);
+  void RemoveBit(Int32 index);
   void PrintBitBoard() const;
 };
 

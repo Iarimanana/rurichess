@@ -5,35 +5,22 @@
 #ifndef RURICHESS_PIECES_H
 #define RURICHESS_PIECES_H
 
-#include <array>
-
 #include "bitboard.h"
+#include "constant.h"
 #include "types.h"
 
 namespace rurichess {
 
-inline constexpr Int32 kPIECE_ARRAY_LEN = 12;
-inline constexpr UInt64 kBLACK_POSITION = 0xffff000000000000;
-inline constexpr UInt64 kWHITE_POSITION = 0xffff;
+inline constexpr Int32 kPieceArrayLen = 12;
 
-extern const std::array<UInt64, kPIECE_ARRAY_LEN> kPIECES_POSITIONS_ARRAY;
-extern const std::array<char, kPIECE_ARRAY_LEN> kPIECES_REPRESENTATIONS_ARRAY;
-
-enum class Color : UInt8 { Black, White };
-enum class PieceNames : Int32 {
-  Wpawn,
-  Bpawn,
-  Wrook,
-  Brook,
-  Wknight,
-  Bknight,
-  Wbishop,
-  Bbishop,
-  Wqueen,
-  Bqueen,
-  Wking,
-  Bking
+inline constexpr std::array<UInt64, kPieceArrayLen> kPiecesPositionsArray = {
+    0xff00, 0xff000000000000,   0x81, 0x8100000000000000,
+    0x42,   0x4200000000000000, 0x24, 0x2400000000000000,
+    0x8,    0x800000000000000,  0x10, 0x1000000000000000,
 };
+
+inline constexpr std::array kPiecesRepresentationsArray = {
+    'P', 'p', 'R', 'r', 'N', 'n', 'B', 'b', 'Q', 'q', 'K', 'k'};
 
 class Piece {
  public:
@@ -42,7 +29,6 @@ class Piece {
   Piece();
   Piece(const Piece& other) = default;
   Piece& operator=(Piece other) noexcept;
-  // TODO: BitBoard movement() const;
 
   [[nodiscard]] BitBoard& position();
   [[nodiscard]] const BitBoard& position() const;
