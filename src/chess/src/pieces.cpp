@@ -12,13 +12,13 @@ using namespace rurichess;
 Piece::Piece() : Piece(PieceNames::Wpawn) {}
 
 Piece::Piece(const PieceNames name)
-    : name_{kPiecesRepresentationsArray[static_cast<Int32>(name)]} {
-  const auto n = static_cast<Int32>(name);
+    : name_{kPiecesRepresentationsArray[static_cast<I32>(name)]} {
+  const auto n = static_cast<I32>(name);
   suit_ = ((n + 1) % 2 == 0) ? Color::Black : Color::White;
   position_ = BitBoard(kPiecesPositionsArray[n]);
 }
 
-Piece::Piece(const Int32 name) : name_{kPiecesRepresentationsArray[name]} {
+Piece::Piece(const I32 name) : name_{kPiecesRepresentationsArray[name]} {
   if (name >= kPieceArrayLen)
     throw std::invalid_argument("The name of the piece is invalid.");
 
@@ -26,11 +26,13 @@ Piece::Piece(const Int32 name) : name_{kPiecesRepresentationsArray[name]} {
   position_ = BitBoard(kPiecesPositionsArray[name]);
 }
 
-Piece& Piece::operator=(Piece other) noexcept {
-  using std::swap;
-  swap(position_, other.position_);
-  swap(name_, other.name_);
-  swap(suit_, other.suit_);
+Piece& Piece::operator=(const Piece& other) noexcept {
+  if (this == &other) return *this;
+
+  position_ = other.position_;
+  name_ = other.name_;
+  suit_ = other.suit_;
+
   return *this;
 }
 

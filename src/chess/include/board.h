@@ -21,12 +21,12 @@ class Board {
   BitBoard blacks_;
 
  public:
-  static constexpr UInt64 kBlackPosition = 0xffff000000000000;
-  static constexpr UInt64 kWhitePosition = 0xffff;
-  static constexpr UInt64 kInitialPosition = 0xffff00000000ffff;
+  static constexpr U64 kBlackPosition = 0xffff000000000000;
+  static constexpr U64 kWhitePosition = 0xffff;
+  static constexpr U64 kInitialPosition = 0xffff00000000ffff;
 
   Board();
-  Int32 Move(Piece p, std::string square);
+  I32 Move(Piece p, std::string square);
   const BitBoard& whites() const;
   const BitBoard& blacks() const;
   void PrintBoard() const;

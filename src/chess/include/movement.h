@@ -5,11 +5,13 @@
 #ifndef RURICHESS_PIECE_MOVEMENT_H
 #define RURICHESS_PIECE_MOVEMENT_H
 
+#include <unordered_map>
+
 #include "pieces.h"
 
 namespace rurichess {
 
-bool CheckIllegalMove(PieceNames p, SquareNames initial_square,
+bool CheckIllegalMove(PieceNames p, Square initial_square,
                       const BitBoard& ending_square);
 
 }  // namespace rurichess

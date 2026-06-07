@@ -11,9 +11,9 @@
 
 namespace rurichess {
 
-inline constexpr Int32 kPieceArrayLen = 12;
+inline constexpr I32 kPieceArrayLen = 12;
 
-inline constexpr std::array<UInt64, kPieceArrayLen> kPiecesPositionsArray = {
+inline constexpr std::array<U64, kPieceArrayLen> kPiecesPositionsArray = {
     0xff00, 0xff000000000000,   0x81, 0x8100000000000000,
     0x42,   0x4200000000000000, 0x24, 0x2400000000000000,
     0x8,    0x800000000000000,  0x10, 0x1000000000000000,
@@ -25,10 +25,10 @@ inline constexpr std::array kPiecesRepresentationsArray = {
 class Piece {
  public:
   explicit Piece(PieceNames name);
-  explicit Piece(Int32 name);
+  explicit Piece(I32 name);
   Piece();
-  Piece(const Piece& other) = default;
-  Piece& operator=(Piece other) noexcept;
+  Piece(const Piece& other) = delete;
+  Piece& operator=(const Piece& other) noexcept;
 
   [[nodiscard]] BitBoard& position();
   [[nodiscard]] const BitBoard& position() const;

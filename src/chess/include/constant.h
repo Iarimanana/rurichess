@@ -11,16 +11,16 @@
 
 namespace rurichess {
 
-inline UInt64 kZero = 0x0000000000000000;
-inline UInt64 kMaxUInt64 = 0xffffffffffffffff;
+inline U64 kZero = 0x0000000000000000;
+inline U64 kMaxUInt64 = 0xffffffffffffffff;
 inline int kSizeBoard = 64;
 
-inline constexpr Int32 kNumPieces = 32;
-inline constexpr Int32 kNumSquares = 64;
+inline constexpr I32 kNumPieces = 32;
+inline constexpr I32 kNumSquares = 64;
 
-enum class Color : UInt8 { Black, White };
+enum class Color : U8 { Black, White };
 
-enum class PieceNames : Int32 {
+enum class PieceNames : I32 {
   Wpawn,
   Bpawn,
   Wrook,
@@ -35,7 +35,7 @@ enum class PieceNames : Int32 {
   Bking
 };
 
-enum class SquareNames : Int32 {
+enum class Square : I32 {
   a8,
   b8,
   c8,

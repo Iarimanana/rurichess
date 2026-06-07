@@ -21,12 +21,12 @@ class TestBitBoard : public testing::Test {
   void TearDown() override { bit_b.PrintBitBoard(); }
 
   BitBoard bit_b;
-  static constexpr UInt64 kWHITE_PAWN{0xff00};
-  static constexpr UInt64 kBLACK_PAWN{0xff000000000000};
+  static constexpr U64 kWHITE_PAWN{0xff00};
+  static constexpr U64 kBLACK_PAWN{0xff000000000000};
 };
 
 TEST_F(TestBitBoard, TestGetBit) {
-  for (const Int32 i : std::views::iota(48, 56)) {
+  for (const I32 i : std::views::iota(48, 56)) {
     ASSERT_EQ(bit_b.GetBit(i), 1);
   }
 }

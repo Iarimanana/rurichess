@@ -9,21 +9,44 @@
 namespace rurichess {
 
 class BitBoard {
-  UInt64 bit_board_;
+  U64 bit_board_;
 
  public:
-  explicit BitBoard(UInt64 bit_board);
+  explicit BitBoard(U64 bit_board);
   BitBoard();
+  BitBoard(const BitBoard& other) = default;
 
   bool operator==(const BitBoard& other) const;
-  bool operator==(const UInt64& other) const;
-  BitBoard operator|(const BitBoard& other) const;
-  BitBoard operator|(const UInt64& other) const;
+  bool operator==(const U64& other) const;
 
-  [[nodiscard]] Int32 GetBit(Int32 index) const;
-  [[nodiscard]] Int32 CountTrailingZero() const;
-  void SetBit(Int32 index);
-  void RemoveBit(Int32 index);
+  BitBoard operator|(const BitBoard& other) const;
+  BitBoard operator|(const U64& other) const;
+
+  BitBoard operator&(const BitBoard& other) const noexcept;
+  BitBoard operator&(U64 other) const noexcept;
+
+  BitBoard operator>>(const BitBoard& other) const noexcept;
+  BitBoard operator>>(U64 other) const noexcept;
+
+  BitBoard operator<<(const BitBoard& other) const noexcept;
+  BitBoard operator<<(U64 other) const noexcept;
+
+  BitBoard operator~() const noexcept;
+
+  BitBoard operator^(const BitBoard& other) const noexcept;
+  BitBoard operator^(U64 other) const noexcept;
+
+  BitBoard& operator=(const BitBoard& other) noexcept;
+  BitBoard& operator=(U64 other) noexcept;
+
+  BitBoard operator*(const BitBoard& other) const;
+  BitBoard operator*(U64 other) const;
+
+  [[nodiscard]] const U64& bit_board() const;
+  [[nodiscard]] U64 GetBit(I32 index) const;
+  [[nodiscard]] I32 CountTrailingZero() const;
+  void SetBit(I32 index);
+  void RemoveBit(I32 index);
   void PrintBitBoard() const;
 };
 

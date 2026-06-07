@@ -10,6 +10,7 @@ namespace {
 
 bool WPawn(const BitBoard& begin, const BitBoard& end) {
   BitBoard legal_position = begin;
+
   return true;
 }
 
@@ -20,10 +21,10 @@ bool BPawn(const BitBoard& begin, const BitBoard& end) {
 
 }  // namespace
 
-bool rurichess::CheckIllegalMove(const PieceNames p, SquareNames initial_square,
-                                 const BitBoard& ending_square) {
+bool CheckIllegalMove(const PieceNames p, Square initial_square,
+                      const BitBoard& ending_square) {
   auto begin = BitBoard();
-  begin.SetBit(static_cast<Int32>(initial_square));
+  begin.SetBit(static_cast<I32>(initial_square));
 
   using enum PieceNames;
   switch (p) {
