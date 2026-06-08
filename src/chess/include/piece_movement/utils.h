@@ -13,6 +13,9 @@
 
 namespace rurichess {
 
+/**
+ *
+ */
 class MagicEntry {
  public:
   BitBoard mask{};

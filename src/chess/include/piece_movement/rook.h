@@ -7,13 +7,41 @@
 #include <array>
 
 #include "../bitboard.h"
+#include "constant.h"
 #include "utils.h"
 
 namespace rurichess {
 
+/**
+ * @brief
+ */
+BitBoard GetRookMove(Square square, BitBoard& blockers);
+
 const std::array<MagicEntry, kNumSquares> kRookMagic;
 
-inline std::array<BitBoard, kNumSquares> kRookMoves;
+/**
+ * @brief All the possible move a ROOK can make at any given position on
+ * the board expressed as a std::array of instances of the Bitboard class.
+ */
+inline std::array<BitBoard, kNumSquares> kRookAttacks;
+
+/**
+ * @brief The maximum number of blockers combination.
+ */
+constexpr I32 kNumOfBlockersCombination = 4096;
+consteval std::array<std::array<U64, kNumOfBlockersCombination>, kNumSquares>
+GenerateBlockerCombination() {
+  constexpr std::array<std::array<U64, kNumOfBlockersCombination>, kNumSquares>
+      result{};
+  return result;
+};
+constexpr std::array<std::array<U64, kNumOfBlockersCombination>, kNumSquares>
+    kCock = GenerateBlockerCombination();
+
+/**
+ * @brief All the possible move a ROOK can make at any given position
+ * on the board expressed as a std::array of unsigned of 64-bit integers.
+ */
 inline constexpr std::array<U64, kNumSquares> kU64RookMoves = {
     0x1010101010101fe,  0x2020202020202fd,  0x4040404040404fb,
     0x8080808080808f7,  0x10101010101010ef, 0x20202020202020df,
@@ -38,8 +66,6 @@ inline constexpr std::array<U64, kNumSquares> kU64RookMoves = {
     0xef10101010101010, 0xdf20202020202020, 0xbf40404040404040,
     0x7f80808080808080,
 };
-
-bool Rook(const BitBoard& begin, const BitBoard& end);
 
 }  // namespace rurichess
 

@@ -33,12 +33,12 @@ class Piece {
   [[nodiscard]] BitBoard& position();
   [[nodiscard]] const BitBoard& position() const;
   [[nodiscard]] char name() const;
-  [[nodiscard]] Color suit() const;
+  [[nodiscard]] Color color() const;
 
  private:
   BitBoard position_;
   char name_;
-  Color suit_;
+  Color color_;
 };
 
 }  // namespace rurichess

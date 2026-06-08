@@ -12,7 +12,7 @@
 using namespace rurichess;
 
 void GenerateRookMoves() {
-  for (I32 i = 32; BitBoard& b : kRookMoves) {
+  for (I32 i = 32; BitBoard& b : kRookAttacks) {
     b = BitBoard(kU64RookMoves[i]);
     i++;
   }

@@ -14,7 +14,16 @@ namespace rurichess {
 
 const std::array<MagicEntry, kNumSquares> kBishopMagic;
 
+/**
+ * @brief All the possible move a BISHOP can make at any given position
+ * on the board expressed as a std::array of instances of the Bitboard class.
+ */
 inline std::array<BitBoard, kNumSquares> kBishopMoves;
+
+/**
+ * @brief All the possible move a BISHOP can make at any given position
+ * on the board expressed as a std::array of unsigned of 64-bit integers.
+ */
 inline constexpr std::array<U64, 64> kU64BishopMoves = {
     0x8040201008040200, 0x80402010080500,   0x804020110a00,
     0x8041221400,       0x182442800,        0x10204885000,

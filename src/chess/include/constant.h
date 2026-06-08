@@ -14,11 +14,27 @@ namespace rurichess {
 inline U64 kZero = 0x0000000000000000;
 inline U64 kMaxUInt64 = 0xffffffffffffffff;
 inline int kSizeBoard = 64;
-
 inline constexpr I32 kNumPieces = 32;
 inline constexpr I32 kNumSquares = 64;
 
-enum class Color : U8 { Black, White };
+/**
+ * @brief Describe the ray attacks of sliding pieces aka ROOK and BISHOP.
+ */
+enum class Direction {
+  North = 8,
+  South = -8,
+  East = 1,
+  West = -1,
+  NorthWest = 7,
+  NorthEast = 9,
+  SouthWest = -9,
+  SouthEast = -7,
+};
+
+enum class Color : U8 {
+  Black,
+  White,
+};
 
 enum class PieceNames : I32 {
   Wpawn,
